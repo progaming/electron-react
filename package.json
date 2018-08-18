@@ -2,24 +2,35 @@
   "name": "electron-react",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "electron": "^2.0.7",
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2",
-    "react-scripts": "1.1.4"
+  "build": {
+    "appId": "th.co.progaming.electron-react",
+    "directories": {
+      "buildResources": "public"
+    }
   },
   "homepage": "./",
-  "main": "src/electron-starter.js",
+  "main": "src/electron.js",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "electron": "electron .",
-    "dev" : "nf start"
+    "prepack": "npm run build && cpx src/electron.js build/electron.js",
+    "pack": "npm run prepack && build --dir",
+    "dist": "npm run prepack && build",
+    "dev": "nf start"
+  },
+  "dependencies": {
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-scripts": "1.1.4"
   },
   "devDependencies": {
+    "cpx": "^1.5.0",
     "cross-env": "^5.2.0",
+    "electron": "^2.0.7",
+    "electron-builder": "^20.28.1",
     "foreman": "^3.0.1"
   }
 }
