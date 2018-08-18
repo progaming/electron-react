@@ -16,7 +16,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "electron": "electron .",
-    "prepack": "npm run build && cpx src/electron.js build/electron.js",
+    "prepack": "npm run build && cpx src/electron.js build/ && cpx icon.png build/",
     "pack": "npm run prepack && build --dir",
     "dist": "npm run prepack && build",
     "dev": "nf start"
